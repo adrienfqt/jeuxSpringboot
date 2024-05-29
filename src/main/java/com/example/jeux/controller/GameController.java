@@ -14,7 +14,7 @@ public class GameController {
     @Autowired
     CountriesService countriesService;
 
-    public static Countries pays;
+    private Countries pays;
 
     @GetMapping("games")
     public String startGame() {
@@ -28,7 +28,7 @@ public class GameController {
     }
 
     @PostMapping("play")
-    public String play(@RequestParam String capital){
+    public String play(@RequestBody String capital){
         if(countriesService.checkProposition(capital,pays)){
             return "Bien joué, bonne réponse";
         }else{
